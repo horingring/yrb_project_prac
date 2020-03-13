@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import LoginPage from './LoginPage';
 import JoinMemberPage from './JoinMemberPage';
+import LoginComplete from './LoginComplete';
+
 
 
 class LoginArea extends Component{
@@ -17,7 +19,7 @@ class LoginArea extends Component{
         if(this.state.mode === 'loginMode'){
             loginMode =
             <LoginPage
-                onChangeMode={function(_mode){
+                onChangeLoginMode={function(_mode){
                     this.setState({
                         mode : _mode
                     });
@@ -26,12 +28,20 @@ class LoginArea extends Component{
         }else if(this.state.mode === 'joinMemberMode'){
             loginMode =
             <JoinMemberPage 
-                onChangeMode={function(_mode){
+                onChangeLoginMode={function(_mode){
                     this.setState({
                         mode : _mode
                     });
             }.bind(this)}></JoinMemberPage>
             ;
+        }else if(this.state.mode === 'loginCompleteMode'){
+            loginMode = 
+            <LoginComplete
+                onChangeLoginMode={function(_mode){
+                    this.setState({
+                        mode : _mode
+                    });
+                }.bind(this)}></LoginComplete>;
         }
 
         return (

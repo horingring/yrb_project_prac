@@ -39,7 +39,7 @@ class JoinMemberPage extends Component{
                         <p>회원가입이 완료되었습니다!</p>
                         <button
                             onClick={function(){
-                                this.props.onChangeMode('loginMode')
+                                this.props.onChangeLoginMode('loginMode')
                             }.bind(this)}>  
                         로그인 페이지로</button>
                     </div>

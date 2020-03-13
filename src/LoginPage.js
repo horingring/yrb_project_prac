@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
 class LoginPage extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            loginTest : false
+        }
+    }
     render(){
         return (
             <div>
@@ -10,6 +16,14 @@ class LoginPage extends Component{
                     onSubmit={function(e){
                         e.preventDefault();
                         //로그인 로직
+                        //1. 받은정보 vs DB정보
+                        //2. DB정보의 nick, ... 받고 세션에 올리기
+                        //3. 로그인완료 창으로 넘어가기
+                        if(/*정보맞음*/this.state.loginTest){
+                            this.props.onChangeLoginMode('loginCompleteMode');
+                        }else{
+                            alert('ID 또는 PW 정보가 일치하지 않습니다');
+                        }
                     }.bind(this)}
                 >
                     <p><input type="text" name="id" placeholder="ID를 입력하세요"></input></p>
@@ -17,7 +31,7 @@ class LoginPage extends Component{
                     <div>
                         <button 
                             onClick={function(){
-                                this.props.onChangeMode('joinMemberMode');
+                                this.props.onChangeLoginMode('joinMemberMode');
                             }.bind(this)}>회원가입
                         </button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
